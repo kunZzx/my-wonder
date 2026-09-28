@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wonder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Great+Vibes&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-frame" aria-hidden="true"></div>
+  <canvas id="hearts" aria-hidden="true"></canvas>
+
+  <!-- ============ LAYAR 1 · GERBANG SANDI ============ -->
+  <section id="screen-gate" class="screen active">
+    <main class="card" id="gate-card">
+      <p class="eyebrow">my wonder</p>
+      <div class="orn" aria-hidden="true">
+        <svg class="bloom sm" viewBox="0 0 40 40">
+          <path d="M20 31 C 10 23, 5 15, 10 10.5 C 13.5 7.5, 18.5 9, 20 12.5 C 21.5 9, 26.5 7.5, 30 10.5 C 35 15, 30 23, 20 31 Z"
+                fill="none" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <h1>Masukkan sandi</h1>
+      <p class="sub">Enam digit untuk membuka layar kenangan.</p>
+        <input id="pin-input" class="pin-single" type="text" inputmode="numeric"
+         maxlength="6" placeholder="••••••" autocomplete="off" />
+      <p class="pin-msg" id="pin-msg" role="alert"></p>
+      <button id="btn-unlock" class="btn-solid" type="button">Buka</button>
+      <p class="script-note">untukmu, dengan segenap hatiku</p>
+    </main>
+  </section>
+
+  <!-- ============ LAYAR 2 · MY WONDER ============ -->
+  <section id="screen-main" class="screen main">
+    <header class="hero">
+      <svg class="heart-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 31 C 10 23, 5 15, 10 10.5 C 13.5 7.5, 18.5 9, 20 12.5 C 21.5 9, 26.5 7.5, 30 10.5 C 35 15, 30 23, 20 31 Z"
+              fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <h1>My Wonder</h1>
+      <p class="tagline">Empat potong waktu, satu lagu yang sama.</p>
+    </header>
+    <div class="marquee" aria-label="Galeri kenangan berjalan">
+      <div class="track" id="track"></div>
+    </div>
+    <p class="hint"></p>
+  </section>
+    <!-- Tombol surat pesan -->
+  <button id="letter-btn" class="letter-btn" hidden>💌 untukmu</button>
+
+  <!-- Surat pesan -->
+  <div id="letter" aria-hidden="true">
+    <article class="letter-card">
+      <button id="letter-close" aria-label="Tutup surat" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+      <p class="letter-eyebrow">dengan sepenuh hatiku</p>
+      <h2 class="letter-title">Untukmu, Sayang</h2>
+      <div class="letter-body">
+        <p>Terimakasii sudaaa mauu bertahan samaa akuu sampai sejauh inii yaaa, Sayang! 🤍 Gak kerasa banget ya kita udah jalan 18 bulan bareng. Jujur, words can&rsquo;t even describe seberapa bersyukurnya aku punya kamu di hidup aku. Out of all people, aku beruntung banget bisa nemuin orang yang gak cuma jadi pacar, tapi juga jadi safe place, sahabat, sekaligus support system nomor satu aku.</p>
+        <p>Makasih ya udah selalu handle semua sifat random dan mood swing aku dengan penuh kesabaran. Makasih juga udah selalu ada, baik di hari-hari pas aku lagi happy maupun pas aku lagi low banget. Kita udah lewatin banyak hal, dari deep talk tengah malem sampai hal-hal gak penting yang bikin kita ketawa bareng.</p>
+        <p>Semoga ke depannya kita bisa terus saling melengkapi, tumbuh bareng, dan makin strong hubungannya. I love you more than you&rsquo;ll ever know, hari ini dan seterusnya! 🫶✨</p>
+      </div>
+      <p class="letter-sign">— 18 bulan, dan terus bertambah 🤍</p>
+    </article>
+  </div>
+  <!-- Tirai transisi -->
+  <div class="curtain" id="curtain" aria-hidden="true">
+    <div class="panel left"><span>M</span></div>
+    <div class="panel right"><span>W</span></div>
+    <div class="curtain-heart">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 31 C 10 23, 5 15, 10 10.5 C 13.5 7.5, 18.5 9, 20 12.5 C 21.5 9, 26.5 7.5, 30 10.5 C 35 15, 30 23, 20 31 Z"
+              fill="currentColor"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" aria-hidden="true">
+    <figure class="lb-inner">
+      <button id="lb-close" aria-label="Tutup" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+      <div class="lb-frame"><img id="lb-img" alt="Kenangan" /></div>
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+  </div>
+
+  <!-- Tombol musik -->
+  <button id="music-toggle" aria-label="Putar / jeda musik" hidden>
+    <svg id="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+    </svg>
+    <svg id="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="hide">
+      <path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>
+      <path d="M3 3l18 18"/>
+    </svg>
+  </button>
+
+  <footer class="site-footer">website by kunZzdev</footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
